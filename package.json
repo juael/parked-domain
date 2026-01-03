@@ -5,11 +5,11 @@
   "description": "Parked Domain",
   "scripts": {
     "build:elm": "elm make src/Main.elm --optimize --output=./dist/elm.js",
-    "build:css": "tailwindcss -i .src/style.css -o ./dist/style.css --minify",
-    "build:html": "cp index.html dist/index.html",
+    "build:css": "tailwindcss -i ./src/style.css -o ./dist/style.css --minify",
+    "build:html": "cp ./index.html ./dist/index.html",
     "build": "rm -rf dist && mkdir dist && pnpm build:elm && pnpm build:css && pnpm build:html",
     "start": "elm-live src/Main.elm --port 8010 --pushstate -- --output=elm.js",
-    "format": "elm-format src --yes",
+    "format": "elm-format ./src --yes",
     "review": "elm-review",
     "test": "elm-test"
   },
