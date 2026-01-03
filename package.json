@@ -4,8 +4,10 @@
   "private": true,
   "description": "Parked Domain",
   "scripts": {
-    "build": "elm make src/Main.elm --output=elm.js",
-    "build:css": "npx tailwindcss -i ./src/style.css -o ./style.css",
+    "build:elm": "elm make src/Main.elm --optimize --output=./dist/elm.js",
+    "build:css": "tailwindcss -i ./style.css -o ./dist/style.css --minify",
+    "build:html": "cp index.html dist/index.html",
+    "build": "rm -rf dist && mkdir dist && pnpm build:elm && pnpm build:css && pnpm build:html",
     "start": "elm-live src/Main.elm --port 8010 --pushstate -- --output=elm.js",
     "format": "elm-format src --yes",
     "review": "elm-review",

@@ -1,0 +1,55 @@
+name: All jobs
+
+on:
+  merge_group:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - dev
+      - "feature/*"
+  pull_request:
+    branches:
+      - main
+      - dev
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    name: Review (elm-review)
+    uses: ./.github/workflows/review.yml
+    secrets: inherit
+
+  unit-test:
+    name: Unit tests (elm-test)
+    uses: ./.github/workflows/unit-test.yml
+    secrets: inherit
+
+  build:
+    name: Build (Elm and Tailwind)
+    needs: [review, unit-test]
+    uses: ./.github/workflows/build.yml
+    secrets: inherit
+
+  deploy-pages:
+    name: Deploy GitHub Pages (gh-pages)
+    needs: [build]
+    if: github.ref == 'refs/heads/main'
+    uses: ./.github/workflows/deploy-gh-pages.yml
+    secrets: inherit
+
+  required:
+    name: Required status
+    needs:
+      - review
+      - unit-test
+      - build
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail if any dependency failed, skipped, or cancelled
+        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'skipped') || contains(needs.*.result, 'cancelled')
+        run: exit 1
