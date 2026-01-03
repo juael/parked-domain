@@ -3,7 +3,7 @@ elm-stuff/
 
 # Generated build outputs (kept out of git)
 elm.js
-style.css
+/style.css
 dist/
 
 # Node dependencies
