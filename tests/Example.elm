@@ -1,8 +1,11 @@
-module Example exposing (..)
+module Example exposing (suite)
 
+import Expect
 import Test exposing (..)
 
 
 suite : Test
 suite =
-    todo "Implement our first test. See https://package.elm-lang.org/packages/elm-explorations/test/latest for how to do this!"
+    test "sanity check" <|
+        \_ ->
+            Expect.equal 1 1
