@@ -1,18 +1,21 @@
 {
   "name": "parked-domain",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "private": true,
-  "description": "Elm project with local tooling (elm, reactor, review, format, test).",
+  "description": "Parked Domain",
   "scripts": {
-    "dev": "concurrently -k -n elm,css \"pnpm exec elm-live src/Main.elm --path-to-elm node_modules/.bin/elm --port 8010 --pushstate --start-page=index.html -- --output=elm.js\" \"pnpm exec tailwindcss -i ./src/style.css -o ./style.css --watch\"",
-    "build": "pnpm exec tailwindcss -i ./src/style.css -o ./style.css --minify && pnpm exec elm make src/Main.elm --optimize --output=elm.js",
-    "start": "pnpm exec elm-live src/Main.elm --path-to-elm node_modules/.bin/elm --port 8010 --pushstate --start-page=index.html -- --output=elm.js",
+    "build": "elm make src/Main.elm --output=elm.js",
+    "build:css": "npx tailwindcss -i ./src/style.css -o ./style.css",
+    "start": "elm-live src/Main.elm --port 8010 --pushstate -- --output=elm.js",
     "format": "elm-format src --yes",
     "review": "elm-review",
     "test": "elm-test"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "elm",
+    "tailwindcss"
+  ],
+  "author": "Julian Dawson",
   "license": "ISC",
   "packageManager": "pnpm@10.19.0",
   "engines": {
@@ -20,7 +23,6 @@
   },
   "devDependencies": {
     "@tailwindcss/cli": "4.1.18",
-    "concurrently": "9.2.1",
     "elm": "0.19.1-6",
     "elm-format": "0.8.8",
     "elm-live": "4.0.2",
