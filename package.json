@@ -28,10 +28,11 @@
   },
   "devDependencies": {
     "@tailwindcss/cli": "4.1.18",
+    "concurrently": "^9.2.1",
     "elm": "0.19.1-6",
     "elm-format": "0.8.8",
-    "elm-live": "4.0.2",
     "elm-json": "0.2.13",
+    "elm-live": "4.0.2",
     "elm-review": "^2.13.5",
     "elm-test": "0.19.1-revision17",
     "tailwindcss": "^4.1.18"
