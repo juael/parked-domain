@@ -1,4 +1,0 @@
-onlyBuiltDependencies:
-  - elm
-  - elm-format
-  - elm-json

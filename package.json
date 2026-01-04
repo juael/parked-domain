@@ -2,13 +2,16 @@
   "name": "parked-domain",
   "version": "0.0.1",
   "private": true,
-  "description": "Parked Domain",
+  "description": "Simple web page to manage parked domains",
   "scripts": {
+    "build:clean": "rm -rf dist && mkdir dist",
     "build:elm": "elm make src/Main.elm --optimize --output=./dist/elm.js",
     "build:css": "tailwindcss -i ./src/style.css -o ./dist/style.css --minify",
     "build:html": "cp ./index.html ./dist/index.html",
-    "build": "rm -rf dist && mkdir dist && pnpm build:elm && pnpm build:css && pnpm build:html",
-    "start": "elm-live src/Main.elm --port 8010 --pushstate -- --output=elm.js",
+    "build": "pnpm build:clean && pnpm build:elm && pnpm build:css && pnpm build:html",
+    "start:elm": "elm-live ./src/Main.elm --port 8010 --dir=./dist --pushstate -- --output=./dist/elm.js",
+    "start:css": "tailwindcss -i ./src/style.css -o ./dist/style.css --watch",
+    "start": "pnpm build:clean && pnpm build:html && concurrently -k -n css,elm -c cyan,magenta \"pnpm start:css\" \"pnpm start:elm\"",
     "format": "elm-format ./src --yes",
     "review": "elm-review",
     "test": "elm-test"
@@ -18,7 +21,7 @@
     "tailwindcss"
   ],
   "author": "Julian Dawson",
-  "license": "ISC",
+  "license": "MIT",
   "packageManager": "pnpm@10.19.0",
   "engines": {
     "node": ">=20"

@@ -28,3 +28,12 @@ jobs:
           name: dist
           path: dist
           if-no-files-found: error
+
+      - name: 'notify vercel'
+        if: always()
+        uses: 'vercel/repository-dispatch/actions/status@v1'
+        with:
+          name: Vercel - parked-domain: build
+          token: ${{ secrets.GITHUB_TOKEN }}
+          sha: ${{ github.event.client_payload.git.sha || github.sha }}
+          state: ${{ job.status == 'success' && 'success' || job.status == 'failure' && 'failure' || 'error' }}

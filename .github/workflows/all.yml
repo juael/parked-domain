@@ -19,6 +19,7 @@ concurrency:
 
 permissions:
   contents: read
+  statuses: write
 
 jobs:
   review:
@@ -36,15 +37,6 @@ jobs:
     needs: [review, unit-test]
     uses: ./.github/workflows/build.yml
     secrets: inherit
-
-  deploy:
-    name: Deploy (gh-pages)
-    needs: [build]
-    if: github.ref == 'refs/heads/main'
-    uses: ./.github/workflows/deploy.yml
-    secrets: inherit
-    permissions:
-      contents: write
 
   required:
     name: Required status

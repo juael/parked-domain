@@ -21,3 +21,12 @@ jobs:
 
       - name: elm-review
         run: pnpm exec elm-review
+
+      - name: 'notify vercel'
+        if: always()
+        uses: 'vercel/repository-dispatch/actions/status@v1'
+        with:
+          name: Vercel - parked-domain: review
+          token: ${{ secrets.GITHUB_TOKEN }}
+          sha: ${{ github.event.client_payload.git.sha || github.sha }}
+          state: ${{ job.status == 'success' && 'success' || 'failure' }}
