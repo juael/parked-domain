@@ -26,7 +26,7 @@ jobs:
         if: always()
         uses: 'vercel/repository-dispatch/actions/status@v1'
         with:
-          name: Vercel - parked-domain: unit-test
+          name: "Vercel - parked-domain: unit-test"
           token: ${{ secrets.GITHUB_TOKEN }}
           sha: ${{ github.event.client_payload.git.sha || github.sha }}
           state: ${{ job.status == 'success' && 'success' || job.status == 'failure' && 'failure' || 'error' }}
