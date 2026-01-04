@@ -20,7 +20,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: elm-review
-        run: npx elm-review
+        run: pnpm exec elm-review
 
       - name: 'notify vercel'
         if: always()
