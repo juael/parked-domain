@@ -27,6 +27,4 @@ jobs:
         uses: 'vercel/repository-dispatch/actions/status@v1'
         with:
           name: "Vercel - parked-domain: review"
-          token: ${{ secrets.GITHUB_TOKEN }}
-          sha: ${{ github.event.client_payload.git.sha || github.sha }}
-          state: ${{ job.status == 'success' && 'success' || 'failure' }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
