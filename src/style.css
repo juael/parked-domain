@@ -53,6 +53,12 @@
     color: var(--color-accent-contrast);
   }
 
+  .highlight-em {
+    @apply italic;
+    background: var(--color-accent);
+    color: var(--color-accent-contrast);
+  }
+
   .link {
     @apply underline underline-offset-4 transition-colors;
     color: var(--color-text);

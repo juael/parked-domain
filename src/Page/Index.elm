@@ -14,13 +14,13 @@ view =
                     , em [ class "headline-em" ] [ text "something great" ]
                     , text ". "
                     , text "If you're seeing this page, maybe it's "
-                    , span [ class "highlight" ] [ text "your something" ]
+                    , em [ class "highlight-em" ] [ text "your something" ]
                     , text "."
                     ]
                 ]
             , div [ class "copy" ]
                 [ p []
-                    [ text "Hi, my name is Julian. If you're interested in this domain, message me on "
+                    [ text "Hello, my name is Julian. If you're interested in this domain, message me on "
                     , a
                         [ href "https://www.linkedin.com/in/julian-dawson/"
                         , target "_blank"
