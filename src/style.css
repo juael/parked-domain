@@ -1,2 +1,71 @@
 @import "tailwindcss";
 
+@layer base {
+  :root {
+    /* Surfaces */
+    --color-bg: #0b0d10;
+
+    /* Text */
+    --color-text: #f8fafc;
+    --color-text-muted: #9b9b9b;
+
+    /* Accent */
+    --color-accent: #6200ee;
+    --color-accent-contrast: #ffffff;
+  }
+
+  html {
+    background: var(--color-bg);
+    color: var(--color-text-muted);
+  }
+}
+
+@layer components {
+  .page {
+    @apply min-h-screen flex flex-col p-8 md:p-16 lg:p-24 relative;
+    background: var(--color-bg);
+  }
+
+  .container {
+    @apply max-w-5xl mx-auto w-full flex-1 flex flex-col justify-center space-y-12;
+  }
+
+  .stack {
+    @apply space-y-4;
+  }
+
+  .headline {
+    @apply text-2xl md:text-3xl lg:text-4xl font-serif leading-tight text-balance;
+    color: var(--color-text);
+  }
+
+  .headline-em {
+    @apply italic;
+  }
+
+  .copy {
+    @apply max-w-2xl space-y-6 text-lg leading-relaxed;
+    color: var(--color-text-muted);
+  }
+
+  .highlight {
+    background: var(--color-accent);
+    color: var(--color-accent-contrast);
+  }
+
+  .link {
+    @apply underline underline-offset-4 transition-colors;
+    color: var(--color-text);
+  }
+
+  /* Hover: accent highlight with contrast text */
+  .link:hover {
+    @apply no-underline;
+    background: var(--color-accent);
+    color: var(--color-accent-contrast);
+  }
+
+  .link:focus-visible {
+    @apply outline-none ring-4 ring-white/10 rounded-sm;
+  }
+}

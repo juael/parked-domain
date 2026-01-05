@@ -1,6 +1,6 @@
 module Main exposing (main)
 
-import Html exposing (..)
+import Html exposing (Html)
 import Page.Index
 
 
