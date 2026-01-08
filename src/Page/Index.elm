@@ -13,8 +13,8 @@ view =
                     [ text "This domain is destined for "
                     , em [ class "headline-em" ] [ text "something great" ]
                     , text ". "
-                    , text "If you're seeing this page, maybe it's "
-                    , em [ class "highlight-em" ] [ text "your something" ]
+                    , text "If you're seeing this page, maybe that "
+                    , em [ class "highlight-em" ] [ text "something is yours" ]
                     , text "."
                     ]
                 ]
